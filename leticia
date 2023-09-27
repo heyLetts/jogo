@@ -1,0 +1,36 @@
+#include <locale.h> //idioma e sinais de pontuação
+#include <iostream> //para funcionar
+#include <cstdlib> // Para gerar números aleatórios
+#include <ctime>  // Para inicializar a semente de geração aleatória
+
+int main(int argc, char** argv){ //argc=mat char=nome especificado
+setlocale(LC_ALL,"Portuguese");
+
+int na=rand()%100+1; //rand aleatorios até 100 e +1 por causa da programação pq se nn fica 99
+int tentativa; 
+int contador=0; //0 pq se nn aparece 2
+
+std::cout<<"Bem vindo!\n Esse é um jogo de adivinhação\n : "<<std::endl;
+
+while (true){ //enquanto o valor de tentativa for verdadeiro
+std::cout<<"tentativa "<< contador+1 <<"\nDigite o seu palpite: "; //apos uma tentativa soma mais uma
+std::cin>> tentativa;
+if (tentativa < 1 || tentativa > 100) { //traço para separar as etapas e continuar caso erre
+            std::cout << "Por favor, insira um número entre 1 e 100." << std::endl;
+            continue;
+}
+if(tentativa==na){ //== igual =pq recebe
+std::cout << "Parabéns você acertou o número\n";
+break; //para nn continuar a rodar as outras coisas
+
+}else if(tentativa<na){ //também se a tentativa for menor que NA aparece tente um número maior
+    std::cout<<"Mais alto!\n";    // for é um loop, para repetir até onde o código até onde pedi
+
+}else{
+    std::cout<<"Mais baixo!\n";
+}
+contador++;    //somar o código
+}
+std::cout<<"você precisou de "<<contador+1 <<"Tentativas para adivinhar\n";
+return 0;
+}
